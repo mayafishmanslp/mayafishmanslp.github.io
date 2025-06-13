@@ -172,16 +172,7 @@
                 break;
         }
         
-        // Validate field length
-        if (field.minLength && value.length < field.minLength) {
-            showFieldError(field, getErrorMessage('too-short', field.minLength));
-            return false;
-        }
-        
-        if (field.maxLength && value.length > field.maxLength) {
-            showFieldError(field, getErrorMessage('too-long', field.maxLength));
-            return false;
-        }
+        // Length validation removed - no restrictions needed for this form
         
         return true;
     }
@@ -190,20 +181,21 @@
      * Validate email format
      */
     function validateEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+        // More flexible email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        return emailRegex.test(email.trim());
     }
     
     /**
      * Validate phone format (basic validation)
      */
     function validatePhone(phone) {
-        // Remove all non-digit characters except + and -
-        const cleanPhone = phone.replace(/[^\d+\-]/g, '');
+        // Remove all non-digit characters except + and - and spaces
+        const cleanPhone = phone.replace(/[^\d+\-\s()]/g, '');
         
-        // Check if it has at least 7 digits (minimum for most phone numbers)
+        // Check if it has at least 5 digits (more flexible for various formats)
         const digitCount = cleanPhone.replace(/[^\d]/g, '').length;
-        return digitCount >= 7 && digitCount <= 15;
+        return digitCount >= 5 && digitCount <= 20; // More flexible range
     }
     
     /**
@@ -274,7 +266,7 @@
      * Get error message in current language
      */
     function getErrorMessage(type, param = null) {
-        const currentLang = window.LanguageToggle ? window.LanguageToggle.getCurrentLanguage() : 'en';
+        const currentLang = window.LanguageToggle ? window.LanguageToggle.getCurrentLanguage() : 'he';
         
         const messages = {
             'required': {
@@ -288,18 +280,10 @@
             'invalid-phone': {
                 en: 'Please enter a valid phone number',
                 he: 'אנא הזינו מספר טלפון תקין'
-            },
-            'too-short': {
-                en: `Must be at least ${param} characters`,
-                he: `חייב להכיל לפחות ${param} תווים`
-            },
-            'too-long': {
-                en: `Must be no more than ${param} characters`,
-                he: `חייב להכיל לא יותר מ-${param} תווים`
             }
         };
         
-        return messages[type] ? messages[type][currentLang] : messages[type]['en'];
+        return messages[type] ? messages[type][currentLang] : messages[type]['he'] || 'שגיאה בשדה';
     }
     
     /**
@@ -316,12 +300,164 @@
         // Collect form data
         const formData = collectFormData();
         
-        // Simulate form submission (replace with actual submission logic)
-        setTimeout(() => {
-            // For demo purposes, we'll just show success
-            // In a real implementation, you would send data to a server
-            handleSubmissionSuccess();
-        }, 2000);
+        // Try to send email using multiple methods
+        sendFormData(formData)
+            .then((result) => {
+                handleSubmissionSuccess(result);
+            })
+            .catch((error) => {
+                handleSubmissionError(error);
+            });
+    }
+    
+    /**
+     * Send form data via email
+     */
+    async function sendFormData(data) {
+        // Primary method: Formspree
+        const formspreeEndpoint = 'https://formspree.io/f/xanjozvq';
+        
+        try {
+            return await sendViaFormspree(data, formspreeEndpoint);
+        } catch (error) {
+            console.warn('Formspree failed, falling back to mailto:', error);
+            // Fallback to mailto (opens email client)
+            return sendViaMailto(data);
+        }
+    }
+    
+    /**
+     * Send via Formspree service
+     */
+    async function sendViaFormspree(data, endpoint) {
+        const currentLang = data.language || 'he';
+        const isHebrew = currentLang === 'he';
+        
+        // Format services array
+        const services = Array.isArray(data.services) ? data.services.join(', ') : (data.services || '');
+        
+        // Create formatted message for Formspree
+        const formattedMessage = isHebrew ? `
+פרטי הפנייה:
+שם: ${data.fullName}
+טלפון: ${data.phone}
+אימייל: ${data.email}
+גיל הפונה: ${data.age || 'לא צוין'}
+תחום הפנייה: ${services || 'לא צוין'}
+אבחון קודם: ${data.priorAssessment || 'לא צוין'}
+
+הערות נוספות:
+${data.notes || 'אין הערות נוספות'}
+
+שפת הפנייה: עברית
+        `.trim() : `
+Inquiry Details:
+Name: ${data.fullName}
+Phone: ${data.phone}
+Email: ${data.email}
+Client Age: ${data.age || 'Not specified'}
+Area of Inquiry: ${services || 'Not specified'}
+Prior Assessment: ${data.priorAssessment || 'Not specified'}
+
+Additional Notes:
+${data.notes || 'No additional notes'}
+
+Language: English
+        `.trim();
+        
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                name: data.fullName,
+                email: data.email,
+                phone: data.phone,
+                message: formattedMessage,
+                _subject: isHebrew ? 
+                    `פנייה חדשה מהאתר - ${data.fullName}` : 
+                    `New website inquiry - ${data.fullName}`,
+                _replyto: data.email,
+                _language: currentLang,
+                _format: 'plain'
+            })
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Formspree error: ${response.status} - ${errorText}`);
+        }
+        
+        return response.json();
+    }
+    
+    /**
+     * Send via mailto (opens email client)
+     */
+    function sendViaMailto(data) {
+        return new Promise((resolve, reject) => {
+            try {
+                const currentLang = data.language || 'he';
+                const isHebrew = currentLang === 'he';
+                
+                // Create email content
+                const subject = isHebrew ? 
+                    `פנייה חדשה מ-${data.fullName}` : 
+                    `New inquiry from ${data.fullName}`;
+                
+                const services = Array.isArray(data.services) ? data.services.join(', ') : (data.services || '');
+                
+                const body = isHebrew ? `
+שלום מאיה,
+
+קיבלת פנייה חדשה מהאתר:
+
+שם: ${data.fullName}
+טלפון: ${data.phone}
+אימייל: ${data.email}
+גיל הפונה: ${data.age || 'לא צוין'}
+תחום הפנייה: ${services || 'לא צוין'}
+אבחון קודם: ${data.priorAssessment || 'לא צוין'}
+
+הערות נוספות:
+${data.notes || 'אין הערות נוספות'}
+
+תאריך: ${new Date().toLocaleDateString('he-IL')}
+                `.trim() : `
+Hello Maya,
+
+You have received a new inquiry from your website:
+
+Name: ${data.fullName}
+Phone: ${data.phone}
+Email: ${data.email}
+Client Age: ${data.age || 'Not specified'}
+Area of Inquiry: ${services || 'Not specified'}
+Prior Assessment: ${data.priorAssessment || 'Not specified'}
+
+Additional Notes:
+${data.notes || 'No additional notes'}
+
+Date: ${new Date().toLocaleDateString('en-US')}
+                `.trim();
+                
+                // Create mailto URL
+                const mailtoUrl = `mailto:mayafishman.slp@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                // Open email client
+                window.location.href = mailtoUrl;
+                
+                // Resolve after a short delay (assuming user will send the email)
+                setTimeout(() => {
+                    resolve({ method: 'mailto' });
+                }, 1000);
+                
+            } catch (error) {
+                reject(error);
+            }
+        });
     }
     
     /**
@@ -374,14 +510,14 @@
     /**
      * Handle successful form submission
      */
-    function handleSubmissionSuccess() {
+    function handleSubmissionSuccess(result) {
         isSubmitting = false;
         
         // Hide loading state
         hideLoadingState();
         
         // Show success message
-        showSuccessMessage();
+        showSuccessMessage(result);
         
         // Reset form
         form.reset();
@@ -432,11 +568,21 @@
     /**
      * Show success message
      */
-    function showSuccessMessage() {
-        const currentLang = window.LanguageToggle ? window.LanguageToggle.getCurrentLanguage() : 'en';
-        const message = window.LanguageToggle ? 
-            window.LanguageToggle.getDynamicText('form-success', currentLang) : 
-            'Thank you! Your message has been sent successfully.';
+    function showSuccessMessage(result) {
+        const currentLang = window.LanguageToggle ? window.LanguageToggle.getCurrentLanguage() : 'he';
+        
+        let message;
+        if (result && result.method === 'mailto') {
+            // Mailto fallback message
+            message = currentLang === 'he' ? 
+                'תודה! נפתח עבורכם חלון אימייל עם הפרטים. אנא שלחו את האימייל כדי להשלים את הפנייה.' :
+                'Thank you! An email window has opened with your details. Please send the email to complete your inquiry.';
+        } else {
+            // Formspree success message
+            message = currentLang === 'he' ? 
+                'תודה! הפרטים נשלחו בהצלחה. אחזור אליכם בהקדם האפשרי.' :
+                'Thank you! Your details have been sent successfully. I will get back to you as soon as possible.';
+        }
         
         showMessage(message, 'success');
     }
@@ -445,10 +591,11 @@
      * Show error message
      */
     function showErrorMessage(error) {
-        const currentLang = window.LanguageToggle ? window.LanguageToggle.getCurrentLanguage() : 'en';
-        const message = window.LanguageToggle ? 
-            window.LanguageToggle.getDynamicText('form-error', currentLang) : 
-            'Sorry, there was an error sending your message. Please try again.';
+        const currentLang = window.LanguageToggle ? window.LanguageToggle.getCurrentLanguage() : 'he';
+        
+        const message = currentLang === 'he' ? 
+            'מצטערת, הייתה בעיה בשליחת הפרטים. אנא נסו שוב או צרו קשר ישירות.' :
+            'Sorry, there was an error sending your details. Please try again or contact directly.';
         
         showMessage(message, 'error');
     }
