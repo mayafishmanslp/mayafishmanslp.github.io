@@ -1,0 +1,17 @@
+---
+description: JavaScript Coding Standards for Maya Fishman SLP Web page
+globs: 
+alwaysApply: false
+---
+
+When writing JavaScript for the Maya Fishman SLP web page, adhere to these standards to maintain code quality and consistency:
+- **`const` and `let`:** Use `const` for variables that should not be reassigned; otherwise, use `let`. Avoid `var`.
+- **Arrow Functions:** Prefer arrow functions for concise callbacks and function expressions.
+- **Async/Await:** Use `async/await` for handling asynchronous operations to improve code readability and maintainability.
+- **Error Handling:** Implement robust error handling using `try/catch` blocks to manage potential exceptions gracefully.
+- **Descriptive Naming:** Use clear, descriptive, and meaningful names for variables and functions to enhance code understanding.
+- **Small Functions:** Keep functions small and focused on performing a single, well-defined task to improve modularity and testability.
+- **Camel Case:** Use camelCase for variable and function names (e.g., `gameScore`, `updatePaddlePosition`).
+- **Pascal Case:** Use PascalCase for class names and constructor functions (e.g., `Paddle`, `GameArena`).
+- **ES Modules:** Utilize ES modules (`import` and `export`) for organizing and structuring code into reusable modules.
+- **Strict Mode:**  Ensure 'use strict' is enabled in your JavaScript files to enforce stricter parsing and error handling.

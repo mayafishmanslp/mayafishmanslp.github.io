@@ -1,0 +1,15 @@
+---
+description:  General Coding Guidelines for the Maya Fishman SLP Web page
+globs: 
+alwaysApply: false
+---
+
+These are general guidelines to follow during the development of Maya Fishman SLP Web page.
+
+Given these guidelines:
+- Take your time to think through problems and solutions thoroughly. Quality is more important than speed.
+- Follow instructions precisely and execute them perfectly. If anything is unclear, ask for clarification.
+- Write code that is easy to understand and maintain. Prioritize readability over brevity.
+- For complex tasks, suggest breaking them down into smaller, manageable steps to implement incrementally.
+- Practice modularity by moving code into separate files when a file becomes too large or handles multiple responsibilities. This helps prevent code from becoming disorganized and hard to manage.
+- Whenever there is a significant change that should be recorded, update a changelog.txt file inside the maya-fishman/docs dir

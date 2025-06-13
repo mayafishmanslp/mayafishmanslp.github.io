@@ -1,0 +1,502 @@
+/* Mobile Small (320px - 480px) - Base styles already mobile-first */
+
+/* Mobile Large (481px - 767px) */
+@media (min-width: 481px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .hero-title {
+        font-size: 26px;
+    }
+    
+    .hero-subtitle {
+        font-size: 15px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .checkbox-group,
+    .radio-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .checkbox-label,
+    .radio-label {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 40px;
+    }
+    
+    /* Header adjustments */
+    .header-content {
+        flex-wrap: nowrap;
+    }
+    
+    .nav {
+        width: auto;
+        order: initial;
+        margin-top: 0;
+    }
+    
+    .nav-list {
+        justify-content: flex-end;
+        gap: 2.5rem;
+    }
+    
+    .nav-list a {
+        font-size: 15px;
+    }
+    
+    .mobile-menu-toggle {
+        display: none;
+    }
+    
+    /* Typography scaling */
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+    
+    body {
+        font-size: 18px;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 140px 0 80px;
+    }
+    
+    .hero-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .hero-image {
+        max-width: 350px;
+    }
+    
+    .hero-image .image-placeholder {
+        height: 300px;
+    }
+    
+    /* About section */
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+    
+    .about-text {
+        text-align: left;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        text-align: left;
+    }
+    
+    .about-description {
+        font-size: 18px;
+    }
+    
+    /* Services */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .service-card {
+        padding: 2rem;
+    }
+    
+    .service-card h4 {
+        font-size: 18px;
+    }
+    
+    .service-card p {
+        font-size: 16px;
+    }
+    
+    /* Contact section */
+    .contact-content {
+        flex-direction: row;
+        gap: 4rem;
+    }
+    
+    .contact-form-container {
+        padding: 2.5rem;
+    }
+    
+    .form-title {
+        font-size: 20px;
+    }
+    
+    .form-subtitle {
+        font-size: 16px;
+    }
+    
+    .checkbox-group,
+    .radio-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .checkbox-label,
+    .radio-label {
+        flex: none;
+    }
+}
+
+/* Desktop (1025px - 1200px) */
+@media (min-width: 1025px) {
+    .container {
+        padding: 0 50px;
+    }
+    
+    /* Typography scaling */
+    h1 {
+        font-size: 32px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 24px;
+    }
+    
+    /* Header */
+    .logo-text {
+        font-size: 24px;
+    }
+    
+    .logo-subtitle {
+        font-size: 14px;
+    }
+    
+    .nav-list a {
+        font-size: 16px;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 160px 0 100px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .cta-button {
+        font-size: 16px;
+        padding: 15px 30px;
+    }
+    
+    .hero-image {
+        max-width: 400px;
+    }
+    
+    .hero-image .image-placeholder {
+        height: 350px;
+    }
+    
+    /* About section */
+    .about {
+        padding: 80px 0;
+    }
+    
+    .about-content {
+        gap: 4rem;
+    }
+    
+    .about-image {
+        max-width: 300px;
+    }
+    
+    .about-image .image-placeholder {
+        height: 300px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .about-description {
+        font-size: 18px;
+    }
+    
+    .credentials h4 {
+        font-size: 18px;
+    }
+    
+    .credentials li {
+        font-size: 16px;
+    }
+    
+    /* Services */
+    .services {
+        padding: 80px 0;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .service-card {
+        padding: 2.5rem;
+    }
+    
+    .service-card h4 {
+        font-size: 20px;
+    }
+    
+    .service-card p {
+        font-size: 16px;
+    }
+    
+    /* Contact section */
+    .contact {
+        padding: 80px 0;
+    }
+    
+    .contact-content {
+        gap: 5rem;
+    }
+    
+    .contact-form-container {
+        padding: 3rem;
+    }
+    
+    .form-title {
+        font-size: 22px;
+    }
+    
+    .form-subtitle {
+        font-size: 16px;
+    }
+    
+    .contact-item p {
+        font-size: 16px;
+    }
+}
+
+/* Large Desktop (1201px+) */
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 60px;
+    }
+    
+    /* Hero section */
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 20px;
+    }
+    
+    .hero-content {
+        gap: 5rem;
+    }
+    
+    /* About section */
+    .about-content {
+        gap: 5rem;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .about-description {
+        font-size: 20px;
+    }
+    
+    /* Services */
+    .services-grid {
+        gap: 3rem;
+    }
+    
+    .service-card {
+        padding: 3rem;
+    }
+    
+    /* Contact section */
+    .contact-content {
+        gap: 6rem;
+    }
+}
+
+/* Mobile Menu Styles (for smaller screens) */
+@media (max-width: 767px) {
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
+    
+    .logo-subtitle {
+        font-size: 11px;
+    }
+    
+    .header-controls {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+        margin-left: 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        order: 3;
+    }
+    
+    .language-toggle {
+        order: 2;
+    }
+    
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        order: 1;
+        width: 100%;
+    }
+    
+    .nav.active {
+        display: block;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+    }
+    
+    .nav-list li {
+        border-bottom: 1px solid #F2F2F2;
+    }
+    
+    .nav-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-list a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 16px;
+    }
+    
+    /* Mobile menu toggle animation */
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Adjust hero for mobile menu */
+    .hero {
+        margin-top: 90px;
+        padding: 80px 0 50px;
+    }
+}
+
+/* High DPI / Retina Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .image-placeholder {
+        /* Placeholder for high-res image handling */
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .mobile-menu-toggle,
+    .language-toggle,
+    .cta-button,
+    .submit-button {
+        display: none;
+    }
+    
+    .hero {
+        margin-top: 0;
+        padding: 2rem 0;
+        background: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    .section-title {
+        font-size: 16pt;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form-container {
+        background: none !important;
+        padding: 0;
+    }
+} 

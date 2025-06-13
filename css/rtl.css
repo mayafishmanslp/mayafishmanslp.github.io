@@ -1,0 +1,281 @@
+/* RTL (Right-to-Left) Styles for Hebrew */
+
+/* Apply RTL when body has rtl class */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Header RTL adjustments */
+body.rtl .header-content {
+    flex-direction: row-reverse;
+}
+
+body.rtl .header-controls {
+    flex-direction: row-reverse;
+}
+
+body.rtl .logo {
+    text-align: right;
+}
+
+/* Navigation RTL */
+body.rtl .nav-list {
+    flex-direction: row-reverse;
+}
+
+/* Language toggle - keep LTR for button layout */
+body.rtl .language-toggle {
+    direction: ltr;
+}
+
+/* Hero section RTL */
+body.rtl .hero-content {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    body.rtl .hero-content {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+}
+
+/* About section RTL */
+body.rtl .about-text {
+    text-align: right;
+}
+
+body.rtl .section-title {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    body.rtl .about-content {
+        flex-direction: row-reverse;
+    }
+    
+    body.rtl .section-title {
+        text-align: right;
+    }
+}
+
+/* Credentials list RTL */
+body.rtl .credentials {
+    text-align: right;
+}
+
+body.rtl .credentials ul {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+body.rtl .credentials li {
+    padding-right: 1rem;
+    padding-left: 0;
+}
+
+body.rtl .credentials li::before {
+    right: 0;
+    left: auto;
+}
+
+/* Services section RTL */
+body.rtl .services {
+    text-align: right;
+}
+
+body.rtl .service-card {
+    text-align: right;
+}
+
+/* Contact section RTL */
+body.rtl .contact {
+    text-align: right;
+}
+
+body.rtl .contact-info {
+    text-align: right;
+}
+
+body.rtl .contact-item {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+body.rtl .contact-item .icon {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+    body.rtl .contact-content {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Form RTL adjustments */
+body.rtl .contact-form-container {
+    text-align: right;
+}
+
+body.rtl .form-title,
+body.rtl .form-subtitle {
+    text-align: right;
+}
+
+body.rtl .form-group label {
+    text-align: right;
+}
+
+body.rtl .form-group input,
+body.rtl .form-group textarea {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Keep email and phone inputs LTR for better UX */
+body.rtl .form-group input[type="email"],
+body.rtl .form-group input[type="tel"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Checkbox and radio RTL */
+body.rtl .checkbox-group,
+body.rtl .radio-group {
+    text-align: right;
+}
+
+body.rtl .checkbox-label,
+body.rtl .radio-label {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+body.rtl .checkbox-label input,
+body.rtl .radio-label input {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* Footer RTL */
+body.rtl .footer {
+    text-align: right;
+}
+
+body.rtl .footer-content {
+    text-align: right;
+}
+
+/* Mobile menu RTL */
+@media (max-width: 767px) {
+    body.rtl .mobile-menu-toggle {
+        order: -1;
+    }
+    
+    body.rtl .nav-list {
+        flex-direction: column;
+        text-align: right;
+    }
+    
+    body.rtl .nav-list a {
+        text-align: right;
+        padding: 1rem 2rem;
+    }
+}
+
+/* Specific Hebrew typography adjustments */
+body.rtl h1,
+body.rtl h2,
+body.rtl h3,
+body.rtl h4,
+body.rtl h5,
+body.rtl h6 {
+    font-weight: 500; /* Hebrew fonts often look better with slightly lighter weight */
+}
+
+body.rtl .logo-text {
+    font-weight: 600;
+}
+
+/* Hebrew text spacing adjustments */
+body.rtl p,
+body.rtl li,
+body.rtl label {
+    line-height: 1.7; /* Hebrew text often benefits from slightly more line height */
+}
+
+/* Ensure proper text direction for mixed content */
+body.rtl .contact-item p {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Keep phone numbers and emails LTR even in RTL mode */
+body.rtl .contact-item p:has(a[href^="tel:"]),
+body.rtl .contact-item p:has(a[href^="mailto:"]) {
+    direction: ltr;
+    text-align: right;
+}
+
+/* Specific adjustments for Hebrew punctuation */
+body.rtl .hero-subtitle,
+body.rtl .about-description {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Language toggle positioning in RTL */
+body.rtl .language-toggle {
+    order: 2;
+}
+
+body.rtl .mobile-menu-toggle {
+    order: 1;
+}
+
+/* Ensure form validation messages appear correctly in RTL */
+body.rtl .form-group .error-message {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Smooth transition for RTL/LTR switching */
+body {
+    transition: direction 0.3s ease;
+}
+
+/* Fix for bullet points in RTL lists */
+body.rtl ul:not(.nav-list) {
+    padding-right: 1.5rem;
+    padding-left: 0;
+}
+
+body.rtl ul:not(.nav-list) li {
+    text-align: right;
+}
+
+/* Ensure icons and emojis don't flip in RTL */
+body.rtl .contact-item .icon {
+    transform: none;
+}
+
+/* Adjust grid layouts for RTL reading pattern */
+@media (min-width: 768px) {
+    body.rtl .services-grid {
+        direction: rtl;
+    }
+    
+    body.rtl .service-card {
+        direction: rtl;
+        text-align: right;
+    }
+}
+
+/* Ensure proper alignment for Hebrew text in cards */
+body.rtl .service-card h4,
+body.rtl .service-card p {
+    text-align: right;
+    direction: rtl;
+} 

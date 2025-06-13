@@ -1,0 +1,26 @@
+---
+description: Asset Management guidles for the Maya Fishman SLP Web page
+globs: 
+alwaysApply: false
+---
+
+Follow these guidelines for managing assets in the Maya Fishman web page project to maintain organization and optimize performance:
+- **Descriptive Filenames:** Use clear and descriptive filenames for all assets (e.g., `paddle_player_texture.png`, `ball_texture_metallic.jpg`, `wall_glass_material.webp`).
+- **Organized Subdirectories:** Organize assets into logical subdirectories within the `assets/` directory. Suggested subdirectories include:
+    - `textures/`: For all texture files used for materials.
+    - `models/`: For 3D models (if any are used beyond basic shapes).
+    - `sounds/`: For sound effects and background music.
+    - `materials/`: For pre-defined Three.js material JSON files (optional).
+- **Preloading System:** Implement a preloading system to load critical assets before starting the game to ensure a smooth initial experience. Use a loading screen to inform the user about the loading progress.
+- **Appropriate File Formats:** Use appropriate file formats for different asset types:
+    - **Textures:** Use PNG for sprites and textures with transparency, WebP for general textures and backgrounds for better compression and quality, and JPG for textures without transparency where file size is critical.
+    - **Audio:** Use OGG or MP3 for audio files, ensuring cross-browser compatibility.
+    - **Models:** Use efficient 3D model formats like GLTF/GLB if custom models are introduced.
+- **Optimize Asset Sizes:** Optimize all assets for web performance:
+    - **Image Compression:** Compress images without losing significant quality using tools like TinyPNG or ImageOptim.
+    - **Audio Compression:** Compress audio files to reduce file size while maintaining acceptable audio quality.
+    - **Model Optimization:** Optimize 3D models to reduce polygon count and file size.
+- **Document Third-Party Assets:** Document any third-party assets used, including their sources, licenses, and any modifications made. Keep licenses in a `licenses/` subdirectory within `assets/` if necessary.
+- **Version Control for Assets:** Include assets in your version control system (like Git) to track changes and manage them along with the code. Consider using Git LFS for large assets if needed.
+
+By following these asset management guidelines, you can ensure your Zero Wing game assets are well-organized, optimized for performance, and properly managed throughout the development process.

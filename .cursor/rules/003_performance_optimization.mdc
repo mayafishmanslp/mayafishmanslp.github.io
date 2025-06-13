@@ -1,0 +1,20 @@
+---
+description: Performance Optimization Guidelines for Maya Fishman SLP Web page
+globs: 
+alwaysApply: false
+---
+
+To ensure smooth and responsive gameplay for the Maya Fishman web page, consider these performance optimization guidelines:
+- **Minimize DOM Manipulation:** Reduce direct manipulation of the DOM as it can be slow. Batch updates and use efficient methods when necessary.
+- **`requestAnimationFrame`:** Use `requestAnimationFrame` for smooth animation loops and rendering updates to synchronize with the browser's refresh rate.
+- **Object Pooling:** Implement object pooling for frequently created and destroyed objects (like balls or particles, if added later) to reduce garbage collection overhead.
+- **Optimize Asset Loading:** Optimize game assets by using sprite sheets, compressing images (use WebP format where possible), and minifying or compressing other assets.
+- **Avoid Global Variables:** Minimize the use of global variables to prevent naming conflicts and improve code maintainability.
+- **Efficient Data Structures:** Use efficient data structures like `Map` and `Set` for frequent lookups and data management where appropriate.
+- **Lazy Loading:** Implement lazy loading for non-essential game elements or assets that are not immediately required at startup.
+- **Three.js Optimizations:** Utilize Three.js specific optimization techniques, such as:
+    - **Geometry and Material Reuse:** Reuse geometries and materials when possible to reduce draw calls.
+    - **Frustum Culling:** Ensure Three.js frustum culling is enabled to avoid rendering objects outside the camera's view.
+    - **`BufferGeometry` and Instancing:** Use `BufferGeometry` for better performance with large numbers of objects, and consider instancing for rendering many copies of the same geometry.
+    - **Texture Optimization:** Use power-of-two texture dimensions and compressed texture formats where applicable.
+- **Profiling:** Regularly profile the game using browser developer tools (like Chrome DevTools) to identify performance bottlenecks and areas for optimization.
