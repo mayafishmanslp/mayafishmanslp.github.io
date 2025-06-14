@@ -51,7 +51,7 @@
 (בוקר עד ערב מוקדם)
 
 ## טופס ליצירת קשר
-**מעוניינים לשמוע עוד?**  
+**מעוניינים לתאם פגישה?**  
 השאירו פרטים ואחזור אליכם בהקדם:
 
 **שם מלא:**  
@@ -142,7 +142,7 @@ Tuesday – Thursday
 (Morning to early evening)
 
 ## Contact Form
-**Interested in learning more?**  
+**Interested in a meeting?**  
 Leave your details and I will get back to you shortly:
 
 **Full Name:**  
