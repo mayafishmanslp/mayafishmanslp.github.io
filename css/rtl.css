@@ -6,9 +6,9 @@ body.rtl {
     text-align: right;
 }
 
-/* Header RTL adjustments */
+/* Header RTL adjustments - Keep logo on left */
 body.rtl .header-content {
-    flex-direction: row-reverse;
+    /* Remove row-reverse to keep logo on left */
 }
 
 body.rtl .header-controls {
@@ -99,13 +99,56 @@ body.rtl .contact-info {
 }
 
 body.rtl .contact-item {
-    flex-direction: row-reverse;
+    flex-direction: row-reverse !important;
     text-align: right;
 }
 
 body.rtl .contact-item .icon {
     margin-left: 0;
     margin-right: 0;
+}
+
+/* Ensure contact details are properly aligned RTL */
+body.rtl .contact-item div,
+body.rtl .contact-item p {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+/* Specifically target contact section title */
+body.rtl .contact .section-title {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+/* Force RTL for all contact text elements */
+body.rtl .contact-details {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+body.rtl .contact-details * {
+    text-align: right !important;
+}
+
+/* Override any default margins/paddings that might interfere */
+body.rtl .contact-info {
+    text-align: right !important;
+}
+
+/* Specifically target the div containers within contact items */
+body.rtl .contact-item > div {
+    text-align: right !important;
+    direction: rtl !important;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Ensure the flex container allows proper text alignment */
+body.rtl .contact-item {
+    text-align: right !important;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -121,6 +164,11 @@ body.rtl .contact-form-container {
 
 body.rtl .form-title,
 body.rtl .form-subtitle {
+    text-align: right;
+}
+
+/* Make form title consistent with section titles */
+body.rtl .form-title {
     text-align: right;
 }
 
@@ -212,11 +260,38 @@ body.rtl .contact-item p {
     text-align: right;
 }
 
-/* Keep phone numbers and emails LTR even in RTL mode */
-body.rtl .contact-item p:has(a[href^="tel:"]),
-body.rtl .contact-item p:has(a[href^="mailto:"]) {
-    direction: ltr;
-    text-align: right;
+/* RTL for Hebrew text paragraphs with data attributes */
+body.rtl .contact-item p[data-he] {
+    text-align: right !important;
+    direction: rtl !important;
+    margin: 0 0 0.25rem 0 !important;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Keep phone numbers and email addresses LTR for readability */
+body.rtl .contact-item p:not([data-he]) {
+    direction: ltr !important;
+    text-align: right !important;
+    margin: 0 0 0.25rem 0 !important;
+    white-space: nowrap;
+}
+
+/* Ensure all paragraphs in contact items are right-aligned */
+body.rtl .contact-item p {
+    text-align: right !important;
+    margin: 0 0 0.25rem 0 !important;
+}
+
+/* Ensure emojis are positioned on the right in RTL */
+body.rtl .contact-item .icon {
+    direction: ltr !important;
+    order: 2;
+}
+
+/* Ensure text content comes first in RTL layout */
+body.rtl .contact-item > div {
+    order: 1;
 }
 
 /* Specific adjustments for Hebrew punctuation */
