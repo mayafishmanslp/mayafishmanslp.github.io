@@ -270,15 +270,17 @@ p {
 
 /* About Section */
 .about {
-    padding: 60px 0;
+    padding: 50px 0;
     background-color: #FFFFFF;
 }
 
 .about-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-image {
@@ -302,7 +304,7 @@ p {
 }
 
 .about-text {
-    flex: 2;
+    width: 100%;
     text-align: center;
 }
 
@@ -310,14 +312,14 @@ p {
     color: #3A6EA5;
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
 .about-description {
     font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
     color: #555;
 }
 
@@ -330,21 +332,22 @@ p {
 .credentials h4 {
     color: #3A6EA5;
     font-size: 16px;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .credentials ul {
     list-style: none;
     padding-left: 0;
+    margin-bottom: 1rem;
 }
 
 .credentials li {
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     padding-left: 1rem;
     position: relative;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 .credentials li::before {
