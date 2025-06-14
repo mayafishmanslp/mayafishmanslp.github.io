@@ -221,7 +221,7 @@ The site is designed for static hosting and can be deployed to:
 ## 📞 Contact Information
 
 **Maya Fishman, SLP**
-- 📍 26 Saadia Gaon St., Tel Aviv
+- 📍 22 Saadia Gaon St., Tel Aviv
 - 📍 Sheba Medical Center – Tel Hashomer
 - 📞 054-5314325
 - 📧 mayafishman.slp@gmail.com
