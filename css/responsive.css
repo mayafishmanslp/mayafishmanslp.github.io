@@ -513,6 +513,16 @@
     .contact-form-container {
         width: 100%;
     }
+    
+    /* Stack form rows on mobile */
+    .form-row {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* High DPI / Retina Display Support */

@@ -367,44 +367,48 @@
                     <p class="form-subtitle" data-en="Leave your details and I will get back to you shortly:" data-he="השאירו פרטים ואחזור אליכם בהקדם:">השאירו פרטים ואחזור אליכם בהקדם:</p>
                     
                     <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="fullName" data-en="Full Name" data-he="שם מלא">שם מלא</label>
-                            <input type="text" id="fullName" name="fullName" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName" data-en="Full Name" data-he="שם מלא">שם מלא</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" data-en="Phone Number" data-he="טלפון">טלפון</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="phone" data-en="Phone Number" data-he="טלפון">טלפון</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" data-en="Email" data-he="מייל">מייל</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="age" data-en="Client's Age" data-he="גיל הפונה">גיל הפונה</label>
-                            <input type="text" id="age" name="age">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" data-en="Email" data-he="מייל">מייל</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="age" data-en="Client's Age" data-he="גיל הפונה">גיל הפונה</label>
+                                <input type="text" id="age" name="age">
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label data-en="Area of Inquiry:" data-he="תחום הפנייה:">תחום הפנייה:</label>
-                            <div class="checkbox-group">
+                            <div class="checkbox-grid">
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="services" value="language-delay">
                                     <span data-en="Language Delay" data-he="עיכוב שפתי">עיכוב שפתי</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="services" value="articulation">
-                                    <span data-en="Articulation & Speech Intelligibility" data-he="היגוי ומובנות דיבור">היגוי ומובנות דיבור</span>
+                                    <span data-en="Articulation" data-he="היגוי">היגוי</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="services" value="school-language">
-                                    <span data-en="School-age Language & Learning" data-he="שפה ולמידה בגיל בית הספר">שפה ולמידה בגיל בית הספר</span>
+                                    <span data-en="School Language" data-he="שפה בבי״ס">שפה בבי״ס</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="services" value="multilingual">
-                                    <span data-en="Multilingualism" data-he="רב לשוניות">רב לשוניות</span>
+                                    <span data-en="Multilingual" data-he="רב לשוניות">רב לשוניות</span>
                                 </label>
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="services" value="swallowing">
@@ -413,9 +417,9 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label data-en="Have you had a prior assessment?" data-he="האם עברתם אבחון מקדים?">האם עברתם אבחון מקדים?</label>
-                            <div class="radio-group">
+                        <div class="form-group compact">
+                            <label data-en="Prior assessment?" data-he="אבחון קודם?">אבחון קודם?</label>
+                            <div class="radio-group-inline">
                                 <label class="radio-label">
                                     <input type="radio" name="priorAssessment" value="yes">
                                     <span data-en="Yes" data-he="כן">כן</span>
@@ -428,8 +432,8 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="notes" data-en="Additional Notes (optional)" data-he="הערות נוספות (לא חובה)">הערות נוספות (לא חובה)</label>
-                            <textarea id="notes" name="notes" rows="4"></textarea>
+                            <label for="notes" data-en="Notes (optional)" data-he="הערות (לא חובה)">הערות (לא חובה)</label>
+                            <textarea id="notes" name="notes" rows="3" placeholder="הערות נוספות..."></textarea>
                         </div>
                         
                         <button type="submit" class="submit-button" data-en="Send" data-he="שלחו לי פרטים">שלחו לי פרטים</button>
