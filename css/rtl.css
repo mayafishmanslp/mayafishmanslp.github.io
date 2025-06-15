@@ -121,6 +121,11 @@ body.rtl .contact .section-title {
     direction: rtl !important;
 }
 
+/* Ensure contact section title container is right-aligned in RTL */
+body.rtl .contact .section-title-container {
+    justify-content: flex-start !important;
+}
+
 /* Force RTL for all contact text elements */
 body.rtl .contact-details {
     text-align: right !important;
